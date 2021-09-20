@@ -17,17 +17,19 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         viewModelFactory = MainActivityViewModelFactory(125)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainActivityViewModel::class.java)
+        binding.myViewModel = viewModel
+        binding.lifecycleOwner = this
 
-        viewModel.totalData.observe(this, Observer {
+        /*viewModel.totalData.observe(this, Observer {
             binding.resultTV.text = it.toString()
-        })
+        })*/
 
-        binding.apply {
+        /*binding.apply {
             addBT.setOnClickListener{
                 viewModel.setTotal(numberET.text.toString().toInt())
 
             }
-        }
+        }*/
 
     }
 }
